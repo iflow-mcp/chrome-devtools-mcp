@@ -58,9 +58,7 @@ export const closePage = defineTool({
       ),
   },
   handler: async (request, response, context) => {
-    const page = context.getPageByIdx(request.params.pageIdx);
-    context.setSelectedPageIdx(0);
-    await page.close({runBeforeUnload: false});
+    await context.closePage(request.params.pageIdx);
     response.setIncludePages(true);
   },
 });
